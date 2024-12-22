@@ -1,0 +1,103 @@
+@import "../../styles/variables.scss";
+
+.cdk-overlay-pane {
+  width: auto !important;
+}
+//container do modal
+.mdc-dialog__container {
+  width: 650px;
+
+  // margin: 0 -75%;
+}
+
+//estrutura que segura os conteúdos no modal
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  padding: 40px;
+  border-radius: 25px;
+  background-color: $color-white-primary;
+}
+
+//texto do título h2
+.mat-mdc-dialog-container .mdc-dialog__title {
+  color: $color-black-primary;
+}
+
+//textos
+.mdc-dialog__content {
+  color: $color-black-primary !important;
+}
+
+//texto dentro do h1
+.mdc-dialog__content > :first-child {
+  margin-top: 0;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+//texto dentro do paragrafo p
+.mdc-dialog__content > :last-child {
+  margin-bottom: 0;
+}
+
+//botões
+.mat-mdc-dialog-actions {
+  padding: var(--mat-dialog-actions-padding, 8px);
+  justify-content: end;
+  gap: 3%;
+
+  .mat-mdc-raised-button:not(:disabled) {
+    background-color: #8a2be2c7 !important;
+    color: $color-white-primary;
+  }
+
+  //estilo do botão que fica desativado (devido ao conflito dele copiar o background-color do botão acima, foi preciso atribuir a cor dele com !important para funcionar)
+  .mat-mdc-raised-button.mat-mdc-button-disabled {
+    border-color: #8a2be2c7 !important;
+
+    background-color: var(
+      --mdc-protected-button-disabled-container-color
+    ) !important;
+  }
+}
+
+.button-desabled {
+  background-color: transparent;
+}
+
+@media (max-width: 610px) {
+  //mudar o padding do container do modal e ter + espaço em telas menores
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    padding: 10px;
+  }
+
+  //mudando o tamanho do botão primário para ficar mais responsivo em telas menores
+  .mat-mdc-outlined-button.mat-mdc-button-disabled {
+    cursor: default;
+    pointer-events: none;
+    color: var(--mdc-outlined-button-disabled-label-text-color);
+    border-color: var(--mdc-outlined-button-disabled-outline-color);
+    width: 50%;
+  }
+}
+
+@media (max-width: 450px) {
+  //mudando o tamanho do botão primário para ficar mais responsivo em telas menores
+  .mat-mdc-outlined-button[disabled],
+  .mat-mdc-raised-button.mat-mdc-button-disabled {
+    width: 53%;
+  }
+}
+
+@media (max-width: 375px) {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #fff;
+  }
+
+  .mat-mdc-dialog-actions .mat-mdc-outlined-button:not(:disabled) {
+    border: solid 0.1px #8a2be2c7;
+    color: #8a2be2c7 !important;
+    width: 60%;
+  }
+}

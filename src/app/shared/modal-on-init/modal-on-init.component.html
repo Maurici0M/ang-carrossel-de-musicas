@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Bem vindos ao Carrosel de Músicas 2.0! 🎄</h2>
+<mat-dialog-content>
+  Estamos em um processo intenso de atualizações para te trazer a melhor
+  experiência possível. Visite nossa documentação e saiba mais! Muito obrigado
+  por acessar o Carrosel de Músicas! Feliz 2025!
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    disabled
+    disabledInteractive
+    matTooltip="Disponível em breve!"
+    class="button-desabled"
+    (click)="testLog()"
+  >
+    Ir para documentação
+  </button>
+
+  <button mat-raised-button mat-dialog-close (click)="closeModal()">
+    Fechar
+  </button>
+</mat-dialog-actions>
