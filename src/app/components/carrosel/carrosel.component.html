@@ -1,0 +1,30 @@
+<section class="background-swiper">
+  <div class="container-swiper">
+    <swiper
+      [slidesPerView]="3"
+      [spaceBetween]="50"
+      [navigation]="true"
+      [rewind]="true"
+      [effect]="'cards'"
+      [pagination]="{ clickable: true, dynamicBullets: true }"
+      [breakpoints]="breakpoints"
+    >
+      <ng-template
+        swiperSlide
+        *ngFor="let sanitizedIframe of database; let i = index"
+      >
+        <div
+          *ngIf="sanitizedIframe"
+          [innerHTML]="sanitizedIframe"
+          class="iframes"
+        >
+          <!-- Log direto no HTML -->
+          <p>Iframe {{ i }} está carregando.</p>
+        </div>
+        <div *ngIf="!sanitizedIframe">Slide {{ i }} está vazio</div>
+      </ng-template>
+    </swiper>
+  </div>
+</section>
+
+<div class="space"></div>

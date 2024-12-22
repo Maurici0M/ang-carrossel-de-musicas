@@ -1,0 +1,91 @@
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
+
+@import "../../styles/variables.scss";
+@import "../../styles/container.scss";
+
+.background-swiper {
+  background-color: azure;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.container-swiper {
+  @include container-element-principal;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+  padding: 45px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: $color-white-primary;
+  background: url("../../../assets/toolbar-background-degrade.png");
+  background-size: cover;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 90%;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $color-black-primary;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+}
+
+.iframes {
+  //lembrar de deixar o display flex para não bugar os iframes no swipper
+  display: flex;
+
+  //caso seja um iframe do YouTube, desativar essa opção
+  flex-direction: column;
+  align-items: center;
+
+  iframe {
+    border-radius: 15px;
+    height: 225px;
+    //box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  }
+
+  div {
+    margin-top: 12px;
+    text-align: center;
+    background-color: #27bfc1;
+    border-radius: 25px;
+    width: 100%;
+
+    a {
+      color: #202020 !important;
+      font-weight: 900;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .iframes {
+    justify-content: center;
+
+    iframe {
+      width: 90%;
+    }
+  }
+}
