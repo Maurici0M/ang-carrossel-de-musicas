@@ -1,0 +1,193 @@
+@import "../../styles/variables.scss";
+@import "../../styles/container.scss";
+
+.mat-toolbar-menu {
+  // display: flex;
+  // justify-content: space-evenly;
+  // padding: 0 2%;
+
+  background: url("../../../assets/toolbar-background-degrade.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: $box-shadow-primary;
+}
+
+.header-menu-toolbar .container-content {
+  @include container-content;
+}
+
+.header-menu-toolbar {
+  @include container-element-principal;
+
+  display: flex;
+  //justify-content: space-evenly;
+  padding: 0 2%;
+  align-items: center;
+
+  // .site-logo {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 12px;
+  // }
+
+  .site-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    color: $color-white-primary;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+}
+
+// barra de pesquisas
+.search-box {
+  background: #fff;
+
+  height: 25px;
+  padding: 10px;
+  border-radius: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.search-text {
+  font-family: "Maven Pro", sans-serif;
+  font-size: 16px;
+
+  background: none;
+  border: 0;
+  outline: 0;
+
+  font-size: 16px;
+
+  padding: 0;
+
+  width: 0;
+
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  cursor: auto;
+}
+
+.search-box:hover > .search-text {
+  transition: all 0.5s ease-in-out;
+  width: 180px;
+}
+
+.search-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box:hover > .search-btn {
+  background: #447ce7;
+}
+
+.loupe-white {
+  display: none;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+@media (max-width: 670px) {
+  .search-box {
+    height: auto;
+    padding: 0;
+  }
+  .search-box:hover > .search-text {
+    transition: all 0.5s ease-in-out;
+    width: 110px;
+  }
+
+  .logo > a {
+    display: none;
+  }
+
+  a.logo-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 660px) {
+  .card {
+    margin: 0;
+
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .no-results-messenger-group {
+    flex-direction: column-reverse;
+  }
+  .text-no-results {
+    letter-spacing: -0.9px;
+    width: 340px;
+  }
+
+  img.no-results-img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 370px) {
+  .search-box:hover > .search-text {
+    transition: all 0.5s ease-in-out;
+    width: 110px;
+  }
+}
+
+@media (max-width: 300px) {
+  .search-box {
+    height: 40px;
+    padding: 5px;
+    font-size: 13px;
+  }
+  .search-box:hover > .search-text {
+    transition: all 0.5s ease-in-out;
+    width: 80px;
+  }
+  .search-box:hover > .search-btn {
+    width: 35px;
+  }
+  .search-btn {
+    width: 30px;
+  }
+}
+
+/*
+.search-box:hover > .search-btn {
+  background: url(../assets/images/culinaria_nav_background.png);
+  background-size: cover;
+  #447ce7
+}*/
+
+.search-box:hover > .search-btn .loupe-blue {
+  display: none;
+}
+
+.search-box:hover > .search-btn .loupe-white {
+  display: block;
+}
