@@ -1,0 +1,45 @@
+@import "./styles/variables.scss";
+
+* {
+  font-family: $font-family-poppins;
+}
+
+.app-container-site {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-txt-initial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: rgba(154, 130, 202, 0.07);
+  padding: 20px;
+
+  h3 {
+    font-family: $font-family-poppins;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: brown;
+    text-align: center;
+  }
+}
+
+.container-txt-info-navigation {
+  h3 {
+    text-align: center;
+    font-family: $font-family-poppins;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: blueviolet;
+    padding: 20px;
+  }
+}
+
+footer {
+  padding: 50px;
+}
