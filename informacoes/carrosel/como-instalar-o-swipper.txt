@@ -1,0 +1,78 @@
+Para instalar o Swiper, usar o seguinte comando no terminal:
+
+-> npm i swiper@8.4.7
+
+Ver o vídeo:
+
+-> https://www.youtube.com/watch?v=OoT3CKVEYXo&ab_channel=DevePro
+
+Usar a documentação de:
+
+-> Swipper Documentation: https://v8.swiperjs.com/angular
+
+___________________________________________________________________________________________
+
+
+Passos:
+
+1 - Coloque o seguinte import no appModule (caso esteja usando a versão no standalone) ou no componente que se encontrar o seu swipper (caso esteja usando a versão standalone do angular)
+
+import { SwiperModule } from 'swiper/angular';
+
+----------------------------------------------------------------------
+
+2 - Declare o SwiperModule na parte de imports
+
+----------------------------------------------------------------------
+
+3 - Vá até o arquivo scss do componente que ficará o swipper, e cole os estilos do carrosel:
+
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
+
+----------------------------------------------------------------------
+
+4 - Vá até o arquivo .ts do componente que ficará o swipper, e cole os seguintes imports:
+
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+----------------------------------------------------------------------
+
+5 - Ainda no arquivo .ts do componente que ficará o swipper, cole o seguinte comando na parte de @Component:
+
+-> encapsulation: ViewEncapsulation.None,
+
+Vale lembrar que, geralmente o angular faz o import de forma automática do ViewEncapsulation na área de imports, mas, caso não faça, basta colar o seguinte comando no import que estará "from: @angula/core":
+
+-> ViewEncapsulation,
+
+----------------------------------------------------------------------
+
+6 - No arquivo .html do componente que ficará o swiper, cole a seguinte estrutura:
+
+<swiper
+      [slidesPerView]="3"
+      [spaceBetween]="50"
+      [navigation]="true"
+      [rewind]="true"
+      [effect]="'cards'"
+      [pagination]="{ clickable: true, dynamicBullets: true }"
+      [breakpoints]="breakpoints"
+    >
+      <ng-template swiperSlide>Slide 1</ng-template>
+      <ng-template swiperSlide>Slide 2</ng-template>
+      <ng-template swiperSlide>Slide 3</ng-template>
+      <ng-template swiperSlide>Slide 4</ng-template>
+      <ng-template swiperSlide>Slide 5</ng-template>
+      <ng-template swiperSlide>Slide 6</ng-template>
+    </swiper>
+
+----------------------------------------------------------------------
+
+7 - Agora, basta adicionar os conteúdos e estilos que quiser ao seu swiper! Ele está pronto para uso! 😉
+

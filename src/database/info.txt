@@ -1,0 +1,16 @@
+Sempre quando for adicionar um novo iFrame ao array, lebre-se de colocá-lo entre àspas simples '<iframe>link_de_exemplo</iframe>'.
+
+Após isso, salve o arquivo com as teclas CTRL + S, e o próprio VSCode irá formatar automáticamente o nosso JSON.
+
+- O JSON "swiper-database" trará os iframes do SoundCloud
+
+- O JSON "yt-swipper-database" trará os iframes do YouTube
+
+Lembre-se que para os arquivos JSON serem lidos pelo Angular, é preciso adicionar a seguinte configuração no arquivo tsconfig.json dentro de compilerOptions:
+
+ //Para o json database ser lido
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+
+Isso fará o Angular deixar de apresentar erro quando tentamos puxar os arquivos do JSON.
+
