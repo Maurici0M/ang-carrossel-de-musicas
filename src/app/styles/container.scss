@@ -1,0 +1,12 @@
+// importe e declare como: @include nome_do_mixin dentro da classe escolhida
+
+@mixin container-element-principal {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@mixin container-content {
+  align-items: center;
+  padding: 0 15%;
+}
