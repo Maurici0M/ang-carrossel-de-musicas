@@ -1,6 +1,4 @@
-# CarroselDeMusicas
-
-Bem vindos ao Carrosel de Músicas 2.0!
+<h1 align='center'>Bem vindos ao Carrosel de Músicas 2.0!</h1>
 
 Essa versão tem o objetivo de promover mudanças significativas de uso da aplicação.
 
@@ -10,15 +8,103 @@ Antes, toda adição e manutenção de conteúdos, era realizada através do Htm
 
 Com a migração para o Angular, ficará mais fácil promover a adição de novos conteúdos, melhorias gerais e correções de bugs.
 
-Nosso projeto inicial continuará ativo por enquanto, e você poderá acessá-lo através do link:
+Nosso projeto inicial continuará ativo por enquanto, e você poderá acessá-lo através do link abaixo:
 
-https://carrosel-de-musicas.vercel.app/
+<a target="_blank" href='https://carrosel-de-musicas.vercel.app/'>Versão HTML CSS e JS</a>
 
-Muito obrigado por visitar a página do Carrosel de Músicas!
+Muito obrigado por visitar a página do <b>Carrosel de Músicas</b>!
 
 ---
 
-Versão 1.1 -> Atualizada em 07/11/2024:
+<details>
+
+<summary> <b>Versão 1.2.0 -> Atualizada em 22/12/2024</b>: </summary>
+
+<br>
+
+O que foi feito?
+
+ <details>
+  <summary> <b>Deploy do projeto no GitHub: </b> </summary>
+  
+  <br>
+  
+  * Agora o código fonte do site está disponível para visualização, e se juntará aos outros aqui disponíveis! 🙂
+</details>
+
+<details>
+   <summary> <b>Mudança na forma de alimentação do carrosel: </b> </summary>
+  
+  <br>
+  
+  * Agora, o site está recebendo os iframes via servidor "Gist do GitHub", utilizando o Axios para fazer a comunicação. Dessa forma, não será preciso ficar se preocupando com o a alimentação de iframes via arquivos mockados no próprio site, facitando a adição e remoção de conteúdos.
+</details>
+
+<details>
+  <summary> <b>Ambiente de Produção (Local) VS Ambiente de Servidor: </b> </summary>
+  
+  <br>
+
+  * Graças ao tópico anterior, foi possível criar duas novas funções: <b>getIframesFromGist</b> e <b>getIframesFromDatabaseLocal</b>. Isso faz com que, o modo de alimentação do carrosel se alterne entre os dados disponíveis no servidor e os disponíveis no próprio site (dados mockados). Para os acessantes, não haverá alteração alguma, mas, na parte de desenvolvimento, isso gerará um grande ganho de organização e facilitará testes de novas aplicações de iframes diferentes (como os do YouTube, por exemplo), sem contar que, utilizando dados vindos do servidor Gist, facilita muito na adição de novos conteúdos ou mesmo exclusão, sem que haja a necessidade de ficar subindo atualizações somente para adicionar ou remover os iframes. :)
+</details>
+
+ <details>
+   <summary> <b>Fisher-Yates: </b> </summary>
+  
+  <br>
+  
+  * Assim como temos na versão do Carrosel de Músicas desenvolvido com HTML + CSS + JavaScript, o embaralhamento dos iframes foi adicionado. Isso causa uma mudança na organização das músicas no swiper, para emitir a sensação de que o site foi atualizado quando houver um acesso recorrente. Na versão 1.1.3 já havia sido implementado o embaralhamento das músicas, porém, somente com os dados mockados, agora foi aplicado tanto com os dados do servidor, quando os estáticos.
+</details>
+
+<details>
+  <summary> <b>Responsividade: </b> </summary>
+  
+  <br>
+  
+  * Melhorias aplicadas na adaptabilidade do site em telas menores.
+</details>
+
+</details>
+
+---
+
+<details>
+
+<summary> <b> Versão 1.1.3 -> Atualizada em 17/12/2024 </b>: </summary>
+
+<br>
+
+O que foi feito?
+
+- Criação do modal de introdução ao iniciar o site;
+- Adição de embaralhamento das músicas do carrosel;
+- Novas músicas adicionadas;
+
+</details>
+
+---
+
+<details>
+
+<summary><b>Versão 1.1.2 Patch de Melhorias e Correções de Bugs -> Atualizada em 11/11/2024</b>:</summary>
+
+<br>
+
+O que foi feito?
+
+- Utilização de rotas para renderização dos conteúdos;
+- Substituição do local de alimentação (database) das músicas, de um array JS para um JSON;
+- Funcionamento automático do carrosel percorrendo o array;
+
+</details>
+
+---
+
+<details>
+
+<summary> <b>Versão 1.1 -> Atualizada em 07/11/2024</b>: </summary>
+
+<br>
 
 O que foi feito?
 
@@ -28,74 +114,32 @@ O que foi feito?
 - Melhorias de usabilidade do carrosel (swiper);
 - Algumas outras pequenas automações de textos sendo adicionados por interpolação;
 
----
-
-Versão 1.1.2 Patch de Melhorias e Correções de Bugs -> Atualizada em 11/11/2024:
-
-O que foi feito?
-
-- Utilização de rotas para renderização dos conteúdos;
-- Substituição do local de alimentação (database) das músicas, de um array JS para um JSON;
-- Funcionamento automático do carrosel percorrendo o array;
+</details>
 
 ---
 
-Versão 1.1.3 -> Atualizada em 17/12/2024:
+🗂️ <b>File lib</b>:
 
-O que foi feito?
+- Box-shadows: https://getcssscan.com/css-box-shadow-examples
 
-- Criação do modal de introdução ao iniciar o site;
-- Adição de embaralhamento das músicas do carrosel;
-- Novas músicas adicionadas;
+- Fonts: https://fonts.google.com/
 
----
+- Swiper Documentation: https://v8.swiperjs.com/angular
 
-Versão 1.2.0 -> Atualizada em 22/12/2024:
-
-O que foi feito?
-
-- Mudança na forma de alimentação do carrosel:
-
-  => Agora, o site está recebendo os iframes via servidor "Gist do GitHub", utilizando o Axios para fazer a comunicação. Dessa forma, não será preciso ficar se preocupando com o a alimentação de iframes via arquivos mockados no próprio site, facitando a adição e remoção de conteúdos.
-
-- Ambiente de Produção (Local) VS Ambiente Servidor:
-
-  => Graças a "Mudança na forma de alimentação do carrosel", foi possível criar duas novas funções: getIframesFromGist e getIframesFromDatabaseLocal. Isso faz com que, o modo de alimentação do carrosel se alterne entre os dados disponíveis no servidor e os disponíveis no próprio site (dados mockados). Para os acessantes, não haverá alteração alguma, mas, na parte de desenvolvimento, isso gerará um grande ganho de organização e facilitará testes de novas aplicações de iframes diferentes (como os do YouTube, por exemplo), sem contar que, utilizando dados vindos do servidor Gist, facilita muito na adição de novos conteúdos ou mesmo exclusão, sem que haja a necessidade de ficar subindo atualizações somente para adicionar ou remover os iframes. :)
-
-- Fisher-Yates:
-  => Assim como temos na versão do Carrosel de Músicas desenvolvido com HTML + CSS + JavaScript, o embaralhamento dos iframes foi adicionado. Isso causa uma mudança na organização das músicas no swiper, para emitir a sensação de que o site foi atualizado quando houver um acesso recorrente. Na versão 1.1.3 já havia sido implementado o embaralhamento das músicas, porém, somente com os dados mockados, agora foi aplicado tanto com os dados do servidor, quando os estáticos.
-
-- Responsividade:
-  => Melhorias aplicadas na adaptabilidade do site em telas menores.
+- Icons list: https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
 
 ---
 
----
+📖 <b>For studies (content that helped me with setting up the website)</b>:
 
-🗂️ File lib:
+- Channel to help with Angular studies: https://www.youtube.com/@devepro9385 | https://www.youtube.com/@netbugstech
 
-Box-shadows: https://getcssscan.com/css-box-shadow-examples
+- How to install Swiper: https://www.youtube.com/watch?v=OoT3CKVEYXo&ab_channel=DevePro
 
-Fonts: https://fonts.google.com/
+- How to Create Responsive Card Slider in HTML CSS & JavaScript | Step-by-Step Tutorial: https://youtu.be/VUtJ7FWCfZA?feature=shared
 
-Swiper Documentation: https://v8.swiperjs.com/angular
+- How To Read Data From JSON File: https://www.youtube.com/watch?v=k6h1I73vpzQ
 
-Icons list: https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
-
----
-
-📖 For studies (content that helped me with setting up the website):
-
-Channel to help with Angular studies: https://www.youtube.com/@devepro9385 | https://www.youtube.com/@netbugstech
-
-How to install Swiper: https://www.youtube.com/watch?v=OoT3CKVEYXo&ab_channel=DevePro
-
-How to Create Responsive Card Slider in HTML CSS & JavaScript | Step-by-Step Tutorial: https://youtu.be/VUtJ7FWCfZA?feature=shared
-
-How To Read Data From JSON File: https://www.youtube.com/watch?v=k6h1I73vpzQ
-
-Copilot: https://copilot.microsoft.com/
-
-ChatGPT: https://chatgpt.com/
+- Como personalizar o seu perfil no Github (Readme): https://youtu.be/TsaLQAetPLU?si=TsIw1GU3dVzeeoba
 
 ---
