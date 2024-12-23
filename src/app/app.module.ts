@@ -23,13 +23,15 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { CarroselComponent } from './components/carrosel/carrosel.component';
 import { ModalOnInitComponent } from './shared/modal-on-init/modal-on-init.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     CarroselComponent,
-    ModalOnInitComponent
+    ModalOnInitComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
