@@ -71,26 +71,26 @@ O que foi feito?
 
 🗂️ Files lib:
 
-Box-shadows: https://getcssscan.com/css-box-shadow-examples
+* Box-shadows: https://getcssscan.com/css-box-shadow-examples
 
-Fonts: https://fonts.google.com/
+* Fonts: https://fonts.google.com/
 
-Swiper Documentation: https://v8.swiperjs.com/angular
+* Swiper Documentation: https://v8.swiperjs.com/angular
 
-Icons list: https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
+* Icons list: https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
 
 ---
 
 📖 For studies (content that helped me set up the website):
 
-Channel to help with Angular studies: https://www.youtube.com/@devepro9385 | https://www.youtube.com/@netbugstech
+* Channel to help with Angular studies: https://www.youtube.com/@devepro9385 | https://www.youtube.com/@netbugstech
 
-How to install Swiper: https://www.youtube.com/watch?v=OoT3CKVEYXo&ab_channel=DevePro
+* How to install Swiper: https://www.youtube.com/watch?v=OoT3CKVEYXo&ab_channel=DevePro
 
-How to Create Responsive Card Slider in HTML CSS & JavaScript | Step-by-Step Tutorial: https://youtu.be/VUtJ7FWCfZA?feature=shared
+* How to Create Responsive Card Slider in HTML CSS & JavaScript | Step-by-Step Tutorial: https://youtu.be/VUtJ7FWCfZA?feature=shared
 
-How To Read Data From JSON File: https://www.youtube.com/watch?v=k6h1I73vpzQ
+* How To Read Data From JSON File: https://www.youtube.com/watch?v=k6h1I73vpzQ
 
-Como personalizar o seu perfil no Github (Readme): https://youtu.be/TsaLQAetPLU?si=TsIw1GU3dVzeeoba
+* Como personalizar o seu perfil no Github (Readme): https://youtu.be/TsaLQAetPLU?si=TsIw1GU3dVzeeoba
 
 ---
