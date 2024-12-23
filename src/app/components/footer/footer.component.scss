@@ -1,4 +1,9 @@
 @import "../../styles/container.scss";
+@import "../../styles/variables.scss";
+
+* {
+  font-family: $PoppinsBaixadaLocalmente, sans-serif;
+}
 
 footer {
   /*background-color: black;*/

@@ -1,7 +1,7 @@
 @import "./styles/variables.scss";
 
 * {
-  font-family: $font-family-poppins;
+  font-family: $PoppinsBaixadaLocalmente;
 }
 
 .app-container-site {
@@ -19,8 +19,8 @@
   padding: 20px;
 
   h3 {
-    font-family: $font-family-poppins;
-    font-weight: 700;
+    font-family: $PoppinsBaixadaLocalmente;
+    font-weight: 900;
     font-style: normal;
     font-size: 20px;
     color: brown;
@@ -31,8 +31,8 @@
 .container-txt-info-navigation {
   h3 {
     text-align: center;
-    font-family: $font-family-poppins;
-    font-weight: 700;
+    font-family: $PoppinsBaixadaLocalmente;
+    font-weight: 900;
     font-style: normal;
     font-size: 20px;
     color: blueviolet;
