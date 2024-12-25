@@ -1,5 +1,9 @@
 @import "../../styles/variables.scss";
 
+* {
+  @include poppinsMedium;
+}
+
 .cdk-overlay-pane {
   width: auto !important;
 }
@@ -24,7 +28,10 @@
 
 //textos
 .mdc-dialog__content {
-  color: $color-black-primary !important;
+  p {
+    color: #202020c2;
+    @include poppins;
+  }
 }
 
 //texto dentro do h1
@@ -68,6 +75,12 @@
   //mudar o padding do container do modal e ter + espaço em telas menores
   .mat-mdc-dialog-container .mdc-dialog__surface {
     padding: 10px;
+  }
+
+  .mdc-dialog__content {
+    p {
+      font-size: unset;
+    }
   }
 
   //mudando o tamanho do botão primário para ficar mais responsivo em telas menores

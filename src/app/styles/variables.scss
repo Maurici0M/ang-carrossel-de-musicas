@@ -1,8 +1,26 @@
 @import "../styles/fonts.scss";
 
 //Font-familys
-$PoppinsBaixadaLocalmente: "PoppinsBaixadaLocalmente", sans-serif;
-//$font-family-zen-dots: "Zen Dots", serif;
+$Poppins: "Poppins", sans-serif;
+@mixin poppins {
+  font-family: $Poppins !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+$PoppinsMedium: "Poppins-Medium", sans-serif;
+@mixin poppinsMedium {
+  font-family: $PoppinsMedium !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+$PoppinsSemiBold: "Poppins-SemiBold", sans-serif;
+@mixin poppinsSemiBold {
+  font-family: $PoppinsSemiBold !important;
+  font-weight: 600;
+  font-style: normal;
+}
 
 //Colors
 $color-black-primary: #202020;

@@ -40,18 +40,12 @@ interface SwipperData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarroselComponent implements OnInit {
-  readonly dialog = inject(MatDialog);
-
-  openModal(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    this.dialog.open(ModalOnInitComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
+  //breakpoints do swipper (responsividade)
+  breakpoints = {
+    0: { slidesPerView: 1, spaceBetween: 60 },
+    660: { slidesPerView: 2, spaceBetween: 60 },
+    950: { slidesPerView: 3, spaceBetween: 60 },
+  };
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -64,8 +58,6 @@ export class CarroselComponent implements OnInit {
 
     //chamar o database mocado (descomitar a linha abaixo e comitar a de cima)
     //this.getIframesFromDatabaseLocal();
-
-    //this.openModal('250ms', '150ms');
   }
 
   database: SafeHtml[] = [];
@@ -112,10 +104,4 @@ export class CarroselComponent implements OnInit {
     }
   }
 
-  //breakpoints do swipper (responsividade)
-  breakpoints = {
-    0: { slidesPerView: 1, spaceBetween: 60 },
-    660: { slidesPerView: 2, spaceBetween: 60 },
-    950: { slidesPerView: 3, spaceBetween: 60 },
-  };
 }

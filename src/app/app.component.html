@@ -6,8 +6,12 @@
   <h3>{{ props.textPrimary }}</h3>
 </div>
 
-<div class="container-txt-info-navigation">
+<div class="container-txt-info-navigation" *ngIf="!mobileMode">
   <h3>{{ props.textSecondary }}</h3>
+</div>
+
+<div class="container-txt-info-navigation" *ngIf="mobileMode">
+  <h3>{{ props.textSecondaryFromMobile }}</h3>
 </div>
 
 <app-carrosel></app-carrosel>

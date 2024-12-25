@@ -30,7 +30,7 @@ export class ModalOnInitComponent {
 
   closeModal() {
     this.dialogRef.close;
-    console.log('modal close');
+    console.log('modal fechado');
   }
 
   testLog() {

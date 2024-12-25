@@ -1,13 +1,14 @@
 @import "./styles/variables.scss";
+@import "./styles/fonts.scss";
+
+// .app-container-site {
+//   max-width: 1320px;
+//   width: 100%;
+//   margin: 0 auto;
+// }
 
 * {
-  font-family: $PoppinsBaixadaLocalmente;
-}
-
-.app-container-site {
-  max-width: 1320px;
-  width: 100%;
-  margin: 0 auto;
+  @include poppinsSemiBold;
 }
 
 .container-txt-initial {
@@ -19,9 +20,6 @@
   padding: 20px;
 
   h3 {
-    font-family: $PoppinsBaixadaLocalmente;
-    font-weight: 900;
-    font-style: normal;
     font-size: 20px;
     color: brown;
     text-align: center;
@@ -31,15 +29,8 @@
 .container-txt-info-navigation {
   h3 {
     text-align: center;
-    font-family: $PoppinsBaixadaLocalmente;
-    font-weight: 900;
-    font-style: normal;
     font-size: 20px;
     color: blueviolet;
     padding: 20px;
   }
-}
-
-footer {
-  padding: 50px;
 }
