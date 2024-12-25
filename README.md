@@ -45,7 +45,7 @@ O que foi feito?
   
   <br>
 
-  * Graças ao tópico anterior, foi possível criar duas novas funções: <b>getIframesFromGist</b> e <b>getIframesFromDatabaseLocal</b>. Isso faz com que, o modo de alimentação do carrosel se alterne entre os dados disponíveis no servidor e os disponíveis no próprio site (dados mockados). Para os acessantes, não haverá alteração alguma, mas, na parte de desenvolvimento, isso gerará um grande ganho de organização e facilitará testes de novas aplicações de iframes diferentes (como os do YouTube, por exemplo), sem contar que, utilizando dados vindos do servidor Gist, facilita muito na adição de novos conteúdos ou mesmo exclusão, sem que haja a necessidade de ficar subindo atualizações somente para adicionar ou remover os iframes. :)
+- Graças ao tópico anterior, foi possível criar duas novas funções: <b>getIframesFromGist</b> e <b>getIframesFromDatabaseLocal</b>. Isso faz com que, o modo de alimentação do carrosel se alterne entre os dados disponíveis no servidor e os disponíveis no próprio site (dados mockados). Para os acessantes, não haverá alteração alguma, mas, na parte de desenvolvimento, isso gerará um grande ganho de organização e facilitará testes de novas aplicações de iframes diferentes (como os do YouTube, por exemplo), sem contar que, utilizando dados vindos do servidor Gist, facilita muito na adição de novos conteúdos ou mesmo exclusão, sem que haja a necessidade de ficar subindo atualizações somente para adicionar ou remover os iframes. :)
 </details>
 
  <details>
@@ -128,6 +128,8 @@ O que foi feito?
 
 - Icons list: https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
 
+- Bootstrap Icons: https://icons.getbootstrap.com/
+
 ---
 
 📖 <b>For studies (content that helped me with setting up the website)</b>:
@@ -141,5 +143,7 @@ O que foi feito?
 - How To Read Data From JSON File: https://www.youtube.com/watch?v=k6h1I73vpzQ
 
 - Como personalizar o seu perfil no Github (Readme): https://youtu.be/TsaLQAetPLU?si=TsIw1GU3dVzeeoba
+
+- Responsive Footer Design using Html & Css: https://youtu.be/YOb67OKw62s?feature=shared
 
 ---
