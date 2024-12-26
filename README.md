@@ -18,6 +18,34 @@ Muito obrigado por visitar a página do <b>Carrosel de Músicas</b>!
 
 <details>
 
+<summary> <b> Versão 1.2.1 -> Atualizada em 26/12/2024 </b>: </summary>
+
+<br>
+
+O que foi feito?
+
+ <details>
+  <summary> <b>Adição de Modo SoundCloud X Youtube: </b> </summary>
+  
+  <br>
+  
+  * Agora temos um botão de interação para mudar a rota do carrosel entre iframes vindos do Youtube e do SoundCloud <b>(funcionalidade atualmente em teste)</b>.
+</details>
+
+ <details>
+  <summary> <b>Melhorias de lógica: </b> </summary>
+  
+  <br>
+  
+* Mudanças na estrutura do site foram realizadas para ser possível adicionar as novas funcionaliades do <b>"Modo SounCloud X Youtube"</b>. Também, foi realizado uma melhor estruturação lógica dos arquivos .ts dos componentes, a ponto de facilitar a manutenção e leitura da lógica do site. 
+</details>
+
+</details>
+
+---
+
+<details>
+
 <summary> <b>Versão 1.2.0 -> Atualizada em 22/12/2024</b>: </summary>
 
 <br>
