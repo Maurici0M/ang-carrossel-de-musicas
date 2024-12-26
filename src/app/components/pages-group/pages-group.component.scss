@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+@import "../../styles/fonts.scss";
+
+* {
+  @include poppinsSemiBold;
+}
+
+.container-txt-initial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: rgba(154, 130, 202, 0.07);
+  padding: 20px;
+
+  h3 {
+    font-size: 20px;
+    color: brown;
+    text-align: center;
+  }
+}
+
+.container-txt-info-navigation {
+  h3 {
+    text-align: center;
+    font-size: 20px;
+    color: blueviolet;
+    padding: 20px;
+  }
+}

@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltip } from '@angular/material/tooltip';
 
+
 import { SwiperModule } from 'swiper/angular';
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -24,6 +25,7 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { CarroselComponent } from './components/carrosel/carrosel.component';
 import { ModalOnInitComponent } from './shared/modal-on-init/modal-on-init.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PagesGroupComponent } from './components/pages-group/pages-group.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ToolbarComponent,
     CarroselComponent,
     ModalOnInitComponent,
-    FooterComponent
+    FooterComponent,
+    PagesGroupComponent
   ],
   imports: [
     BrowserModule,
