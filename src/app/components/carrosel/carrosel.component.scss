@@ -14,7 +14,21 @@
 .container-swiper {
   @include container-element-principal;
 
-  padding: 50px 0px 50px 0px;
+  padding: 30px 0px 50px 0px;
+
+  p {
+    text-align: center;
+
+    span {
+      @include poppinsMedium;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+  }
 }
 
 .swiper {
@@ -79,6 +93,65 @@
       color: #202020 !important;
       font-weight: 900;
     }
+  }
+}
+
+.iframes-youtube {
+  display: flex;
+  flex-direction: row;
+
+  iframe {
+    border-radius: 15px;
+    height: 279px;
+    //box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  }
+}
+
+.btn {
+  background: transparent;
+  width: 45px;
+  height: 45px;
+  border: none;
+  transition: all ease-in-out 0.5s;
+
+  .bi.bi-youtube {
+    font-size: 35px;
+    color: lavender;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+  }
+
+  .bi.bi-youtube.active {
+    color: red;
+  }
+
+  .bi.bi-youtube:hover {
+    color: red;
+  }
+
+  .bi.bi-youtube:active {
+    color: rgba(255, 0, 0, 0.438);
+    transform: scale(0.95);
+  }
+
+  .bi.bi-cloud-fog2-fill {
+    font-size: 35px;
+    color: lavender;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+  }
+
+  .bi.bi-cloud-fog2-fill.active {
+    color: orangered;
+  }
+
+  .bi.bi-cloud-fog2-fill:hover {
+    color: orangered;
+  }
+
+  .bi.bi-cloud-fog2-fill:active {
+    color: rgba(255, 68, 0, 0.493);
+    transform: scale(0.95);
   }
 }
 

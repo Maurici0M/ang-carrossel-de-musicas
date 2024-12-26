@@ -1,5 +1,34 @@
+<!-- <p>Beta</p>
+<button type="button" class="btn" (click)="setTypeView('soundcloud')">
+  <i class="bi bi-cloud-fog2-fill"></i>
+</button>
+
+<button type="button" class="btn" (click)="setTypeView('youtube')">
+  <i class="bi bi-youtube"></i>
+</button> -->
+
+<!--  -->
+
 <section class="background-swiper">
   <div class="container-swiper">
+    <p>
+      Modo: <span>{{ viewModeTxt }}</span>
+    </p>
+    <div class="btn-container">
+      <button type="button" class="btn" (click)="setTypeView('soundcloud')">
+        <i
+          class="bi bi-cloud-fog2-fill"
+          [ngClass]="{ active: typeview === 'soundcloud' }"
+        ></i>
+      </button>
+
+      <button type="button" class="btn" (click)="setTypeView('youtube')">
+        <i
+          class="bi bi-youtube"
+          [ngClass]="{ active: typeview === 'youtube' }"
+        ></i>
+      </button>
+    </div>
     <swiper
       [slidesPerView]="3"
       [spaceBetween]="50"
@@ -9,17 +38,51 @@
       [pagination]="{ clickable: true, dynamicBullets: true }"
       [breakpoints]="breakpoints"
     >
-      <ng-template
+      <!-- SoundCloud -->
+      <!-- <ng-template
         swiperSlide
-        *ngFor="let sanitizedIframe of database; let i = index"
+        *ngFor="let sanitizedIframe of databaseSoundCloud; let i = index"
       >
         <div
           *ngIf="sanitizedIframe"
           [innerHTML]="sanitizedIframe"
           class="iframes"
         >
-          <!-- Log direto no HTML -->
           <p>Iframe {{ i }} está carregando.</p>
+        </div>
+        <div *ngIf="!sanitizedIframe">Slide {{ i }} está vazio</div>
+      </ng-template> -->
+
+      <!-- Youtube -->
+      <!-- <ng-template
+        swiperSlide
+        *ngFor="let musicasYoutube of databaseYouTube; let i = index"
+      >
+        <div
+          *ngIf="musicasYoutube"
+          [innerHTML]="musicasYoutube"
+          class="iframes-youtube"
+        >
+        </div>
+        <div *ngIf="!musicasYoutube">Slide {{ i }} está vazio</div>
+      </ng-template> -->
+
+      <ng-template
+        swiperSlide
+        *ngFor="
+          let sanitizedIframe of typeview === 'soundcloud'
+            ? databaseSoundCloud
+            : databaseYouTube;
+          let i = index
+        "
+      >
+        <div
+          *ngIf="sanitizedIframe"
+          [innerHTML]="sanitizedIframe"
+          class="iframes"
+          [ngClass]="{ 'iframes-youtube': typeview === 'youtube' }"
+        >
+          <p>{{ typeview }} Iframe {{ i }} está carregando.</p>
         </div>
         <div *ngIf="!sanitizedIframe">Slide {{ i }} está vazio</div>
       </ng-template>

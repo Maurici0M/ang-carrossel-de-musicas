@@ -40,6 +40,16 @@ interface SwipperData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarroselComponent implements OnInit {
+  typeview: string = 'soundcloud'; // Iniciar com SoundCloud
+  viewModeTxt: string = 'SoundCloud (estável)';
+
+  // Notifique a detecção de mudanças
+  setTypeView(type: string) {
+    this.typeview = type;
+    this.viewModeTxt = type === 'soundcloud' ? 'SoundCloud (estável)' : 'YouTube (beta)';
+    this.changeDetector.detectChanges();
+  }
+
   //breakpoints do swipper (responsividade)
   breakpoints = {
     0: { slidesPerView: 1, spaceBetween: 60 },
@@ -53,17 +63,18 @@ export class CarroselComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //chamar o database do servidor gits do git
-    this.getIframesFromGist();
+    this.getIAllIframesFromGist();
 
-    //chamar o database mocado (descomitar a linha abaixo e comitar a de cima)
+    //chamar o database mockado (descomitar a linha abaixo e comitar a de cima)
     //this.getIframesFromDatabaseLocal();
   }
 
-  database: SafeHtml[] = [];
+  databaseSoundCloud: SafeHtml[] = [];
 
-  //chamamento dos iframes usando o gist
-  getIframesFromGist() {
+  databaseYouTube: SafeHtml[] = [];
+
+  //chamamento dos iframes
+  getIframesFromSoundCloud() {
     axios
       .get(
         'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/a4d46dd60d029ced9c56b7af1bc1a894a8382014/database.json'
@@ -71,13 +82,17 @@ export class CarroselComponent implements OnInit {
       .then((response) => {
         const swipperDatabase = response.data;
         //console.log('Dados do Gist:', swipperDatabase);
-        this.database = swipperDatabase.iframes.map((data: SwipperData) => {
-          const sanitized = this.sanitizer.bypassSecurityTrustHtml(data.iFrame);
-          //console.log('Sanitized iFrame:', sanitized);
-          return sanitized;
-        });
+        this.databaseSoundCloud = swipperDatabase.iframes.map(
+          (data: SwipperData) => {
+            const sanitized = this.sanitizer.bypassSecurityTrustHtml(
+              data.iFrame
+            );
+            //console.log('Sanitized iFrame:', sanitized);
+            return sanitized;
+          }
+        );
         //console.log('Database:', this.database);
-        this.shuffleArray(this.database);
+        this.shuffleArray(this.databaseSoundCloud);
         // Notifique a detecção de mudanças
         this.changeDetector.detectChanges();
       })
@@ -86,22 +101,53 @@ export class CarroselComponent implements OnInit {
       });
   }
 
+  getIframesFromYouTube() {
+    axios
+      .get(
+        'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/4e4854defb889ae6a32d4cb7020d46034220bfad/database-youtube.json'
+      )
+      .then((response) => {
+        const swipperDatabase = response.data;
+        //console.log('Dados do Gist:', swipperDatabase);
+        this.databaseYouTube = swipperDatabase.iframes.map(
+          (data: SwipperData) => {
+            const sanitized = this.sanitizer.bypassSecurityTrustHtml(
+              data.iFrame
+            );
+            //console.log('Sanitized iFrame:', sanitized);
+            return sanitized;
+          }
+        );
+        //console.log('Database:', this.database);
+        this.shuffleArray(this.databaseYouTube);
+        // Notifique a detecção de mudanças
+        this.changeDetector.detectChanges();
+      })
+      .catch((error) => {
+        console.error('Erro ao carregar os dados do Gist:', error);
+      });
+  }
+
+  getIAllIframesFromGist() {
+    this.getIframesFromSoundCloud();
+    this.getIframesFromYouTube();
+  }
+
   //chamamento dos iframes usando os dados locais salvos na pasta database
   getIframesFromDatabaseLocal() {
     //trocar o valor do database para o import que desejar (SoundCloud / YouTube)
-    this.database = swipperDbLocalFromYouTube.iframes.map((data: SwipperData) =>
-      this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
+    this.databaseSoundCloud = swipperDbLocalFromYouTube.iframes.map(
+      (data: SwipperData) => this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
     );
 
-    this.shuffleArray(this.database);
+    this.shuffleArray(this.databaseSoundCloud);
   }
 
-  // Algoritmo Fisher-Yates para embaralhar o array
+  //função de embraralhamento dos iframes
   shuffleArray(array: any[]) {
     for (let index = array.length - 1; index > 0; index--) {
       const randon = Math.floor(Math.random() * (index + 1));
       [array[index], array[randon]] = [array[randon], array[index]];
     }
   }
-
 }
