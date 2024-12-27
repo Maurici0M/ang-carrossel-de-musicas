@@ -15,7 +15,19 @@
       Modo: <span>{{ viewModeTxt }}</span>
     </p>
     <div class="btn-container">
-      <button type="button" class="btn" (click)="setTypeView('soundcloud')">
+      <i
+        class="bi bi-cloud-fog2-fill"
+        (click)="setTypeView('soundcloud')"
+        [ngClass]="{ active: typeview === 'soundcloud' }"
+      ></i>
+
+      <i
+        class="bi bi-youtube"
+        (click)="setTypeView('youtube')"
+        [ngClass]="{ active: typeview === 'youtube' }"
+      ></i>
+
+      <!-- <button type="button" class="btn" (click)="setTypeView('soundcloud')">
         <i
           class="bi bi-cloud-fog2-fill"
           [ngClass]="{ active: typeview === 'soundcloud' }"
@@ -27,7 +39,7 @@
           class="bi bi-youtube"
           [ngClass]="{ active: typeview === 'youtube' }"
         ></i>
-      </button>
+      </button> -->
     </div>
     <swiper
       [slidesPerView]="3"
