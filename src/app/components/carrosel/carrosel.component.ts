@@ -39,6 +39,7 @@ interface SwipperData {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class CarroselComponent implements OnInit {
   typeview: string = 'soundcloud'; // Iniciar com SoundCloud
   viewModeTxt: string = 'SoundCloud (estável)';
@@ -103,9 +104,11 @@ export class CarroselComponent implements OnInit {
 
   getIframesFromYouTube() {
     axios
-      .get(
-        'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/4e4854defb889ae6a32d4cb7020d46034220bfad/database-youtube.json'
-      )
+      // .get(
+      //   'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/4e4854defb889ae6a32d4cb7020d46034220bfad/database-youtube.json'
+      // )
+
+      .get('https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/92c2eee7783e83580b6c82b842f83e8a10183412/database-youtube.json')
       .then((response) => {
         const swipperDatabase = response.data;
         //console.log('Dados do Gist:', swipperDatabase);
