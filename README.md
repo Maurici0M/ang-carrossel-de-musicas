@@ -18,6 +18,23 @@ Muito obrigado por visitar a página do <b>Carrosel de Músicas</b>!
 
 <details>
 
+<summary> <b> Versão 1.2.2 -> Atualizada em 27/12/2024 </b>: </summary>
+
+<br>
+
+O que foi feito?
+
+* <b>Melhorias visuais nos botões de "Modo SoundCloud X Youtube"; </b>
+* <b>Atualização de conteúdos para os iFrames do modo Youtube; </b>
+* <b>Melhorias na identação dos estilos do carrosel; </b>
+
+</details>
+
+
+---
+
+<details>
+
 <summary> <b> Versão 1.2.1 -> Atualizada em 26/12/2024 </b>: </summary>
 
 <br>
