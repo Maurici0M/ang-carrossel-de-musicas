@@ -1,4 +1,4 @@
-<h1 align='center'>Bem vindos ao Carrosel de Músicas 2.0!</h1>
+<h1 align='center'>Bem vindos ao Carrossel de Músicas 2.0!</h1>
 
 Essa versão tem o objetivo de promover mudanças significativas de uso da aplicação.
 
@@ -12,7 +12,7 @@ Nosso projeto inicial continuará ativo por enquanto, e você poderá acessá-lo
 
 <a target="_blank" href='https://carrosel-de-musicas.vercel.app/'>Versão HTML CSS e JS</a>
 
-Muito obrigado por visitar a página do <b>Carrosel de Músicas</b>!
+Muito obrigado por visitar a página do <b>Carrossel de Músicas</b>!
 
 ---
 
@@ -46,7 +46,7 @@ O que foi feito?
   
   <br>
   
-  * Agora temos um botão de interação para mudar a rota do carrosel entre iframes vindos do Youtube e do SoundCloud <b>(funcionalidade atualmente em teste)</b>.
+  * Agora temos um botão de interação para mudar a rota do carrossel entre iframes vindos do Youtube e do SoundCloud <b>(funcionalidade atualmente em teste)</b>.
 </details>
 
  <details>
