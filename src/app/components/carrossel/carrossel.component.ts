@@ -33,14 +33,14 @@ interface SwipperData {
 }
 
 @Component({
-  selector: 'app-carrosel',
-  templateUrl: './carrosel.component.html',
-  styleUrls: ['./carrosel.component.scss'],
+  selector: 'app-carrossel',
+  templateUrl: './carrossel.component.html',
+  styleUrl: './carrossel.component.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class CarroselComponent implements OnInit {
+export class CarrosselComponent {
   typeview: string = 'soundcloud'; // Iniciar com SoundCloud
   viewModeTxt: string = 'SoundCloud (estável)';
 

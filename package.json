@@ -1,5 +1,5 @@
 {
-  "name": "ang-carrosel-de-musicas",
+  "name": "ang-carrossel-de-musicas",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ang-carrosel-de-musicas": "node dist/ang-carrosel-de-musicas/server/server.mjs"
+    "serve:ssr:ang-carrossel-de-musicas": "node dist/ang-carrossel-de-musicas/server/server.mjs"
   },
   "private": true,
   "dependencies": {

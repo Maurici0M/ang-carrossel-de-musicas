@@ -25,7 +25,7 @@ import { SwiperModule } from 'swiper/angular';
 
 ----------------------------------------------------------------------
 
-3 - Vá até o arquivo scss do componente que ficará o swipper, e cole os estilos do carrosel:
+3 - Vá até o arquivo scss do componente que ficará o swipper, e cole os estilos do carrossel:
 
 @import "swiper/scss";
 @import "swiper/scss/navigation";

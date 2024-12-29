@@ -22,19 +22,19 @@ import axios from 'axios';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-import { CarroselComponent } from './components/carrosel/carrosel.component';
 import { ModalOnInitComponent } from './shared/modal-on-init/modal-on-init.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PagesGroupComponent } from './components/pages-group/pages-group.component';
+import { CarrosselComponent } from './components/carrossel/carrossel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    CarroselComponent,
+    CarrosselComponent,
     ModalOnInitComponent,
     FooterComponent,
-    PagesGroupComponent
+    PagesGroupComponent,
   ],
   imports: [
     BrowserModule,

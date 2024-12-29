@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
-  tittleToolbar: string = 'Carrosel Musical 2.0'
+  tittleToolbar: string = 'Carrossel Musical 2.0'
 }

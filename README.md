@@ -26,7 +26,7 @@ O que foi feito?
 
 * <b>Melhorias visuais nos botões de "Modo SoundCloud X Youtube"; </b>
 * <b>Atualização de conteúdos para os iFrames do modo Youtube; </b>
-* <b>Melhorias na identação dos estilos do carrosel; </b>
+* <b>Melhorias na identação dos estilos do carrossel; </b>
 
 </details>
 
@@ -78,7 +78,7 @@ O que foi feito?
 </details>
 
 <details>
-   <summary> <b>Mudança na forma de alimentação do carrosel: </b> </summary>
+   <summary> <b>Mudança na forma de alimentação do carrossel: </b> </summary>
   
   <br>
   
@@ -90,7 +90,7 @@ O que foi feito?
   
   <br>
 
-- Graças ao tópico anterior, foi possível criar duas novas funções: <b>getIframesFromGist</b> e <b>getIframesFromDatabaseLocal</b>. Isso faz com que, o modo de alimentação do carrosel se alterne entre os dados disponíveis no servidor e os disponíveis no próprio site (dados mockados). Para os acessantes, não haverá alteração alguma, mas, na parte de desenvolvimento, isso gerará um grande ganho de organização e facilitará testes de novas aplicações de iframes diferentes (como os do YouTube, por exemplo), sem contar que, utilizando dados vindos do servidor Gist, facilita muito na adição de novos conteúdos ou mesmo exclusão, sem que haja a necessidade de ficar subindo atualizações somente para adicionar ou remover os iframes. :)
+- Graças ao tópico anterior, foi possível criar duas novas funções: <b>getIframesFromGist</b> e <b>getIframesFromDatabaseLocal</b>. Isso faz com que, o modo de alimentação do carrossel se alterne entre os dados disponíveis no servidor e os disponíveis no próprio site (dados mockados). Para os acessantes, não haverá alteração alguma, mas, na parte de desenvolvimento, isso gerará um grande ganho de organização e facilitará testes de novas aplicações de iframes diferentes (como os do YouTube, por exemplo), sem contar que, utilizando dados vindos do servidor Gist, facilita muito na adição de novos conteúdos ou mesmo exclusão, sem que haja a necessidade de ficar subindo atualizações somente para adicionar ou remover os iframes. :)
 </details>
 
  <details>
@@ -98,7 +98,7 @@ O que foi feito?
   
   <br>
   
-  * Assim como temos na versão do Carrosel de Músicas desenvolvido com HTML + CSS + JavaScript, o embaralhamento dos iframes foi adicionado. Isso causa uma mudança na organização das músicas no swiper, para emitir a sensação de que o site foi atualizado quando houver um acesso recorrente. Na versão 1.1.3 já havia sido implementado o embaralhamento das músicas, porém, somente com os dados mockados, agora foi aplicado tanto com os dados do servidor, quando os estáticos.
+  * Assim como temos na versão do Carrossel de Músicas desenvolvido com HTML + CSS + JavaScript, o embaralhamento dos iframes foi adicionado. Isso causa uma mudança na organização das músicas no swiper, para emitir a sensação de que o site foi atualizado quando houver um acesso recorrente. Na versão 1.1.3 já havia sido implementado o embaralhamento das músicas, porém, somente com os dados mockados, agora foi aplicado tanto com os dados do servidor, quando os estáticos.
 </details>
 
 <details>
@@ -122,7 +122,7 @@ O que foi feito?
 O que foi feito?
 
 - Criação do modal de introdução ao iniciar o site;
-- Adição de embaralhamento das músicas do carrosel;
+- Adição de embaralhamento das músicas do carrossel;
 - Novas músicas adicionadas;
 
 </details>
@@ -139,7 +139,7 @@ O que foi feito?
 
 - Utilização de rotas para renderização dos conteúdos;
 - Substituição do local de alimentação (database) das músicas, de um array JS para um JSON;
-- Funcionamento automático do carrosel percorrendo o array;
+- Funcionamento automático do carrossel percorrendo o array;
 
 </details>
 
@@ -156,7 +156,7 @@ O que foi feito?
 - Adição de novos estilos;
 - Melhorias aplicadas na barra de menu;
 - Adição de buscador dinâmico na barra de menu;
-- Melhorias de usabilidade do carrosel (swiper);
+- Melhorias de usabilidade do carrossel (swiper);
 - Algumas outras pequenas automações de textos sendo adicionados por interpolação;
 
 </details>

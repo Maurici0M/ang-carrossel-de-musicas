@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ang-carrosel-de-musicas": {
+    "ang-carrossel-de-musicas": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -29,7 +29,7 @@
               "proxy-from-env",
               "follow-redirects"
             ],
-            "outputPath": "dist/ang-carrosel-de-musicas",
+            "outputPath": "dist/ang-carrossel-de-musicas",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ang-carrosel-de-musicas:build:production"
+              "buildTarget": "ang-carrossel-de-musicas:build:production"
             },
             "development": {
-              "buildTarget": "ang-carrosel-de-musicas:build:development"
+              "buildTarget": "ang-carrossel-de-musicas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ang-carrosel-de-musicas:build"
+            "buildTarget": "ang-carrossel-de-musicas:build"
           }
         },
         "test": {
