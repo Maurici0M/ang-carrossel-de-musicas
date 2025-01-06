@@ -25,4 +25,5 @@ export class PagesGroupComponent {
   ngOnInit(): void {
     this.mobileMode = this.screenSize.isMobileMode()
   }
+
 }

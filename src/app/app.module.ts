@@ -26,6 +26,8 @@ import { ModalOnInitComponent } from './shared/modal-on-init/modal-on-init.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { PagesGroupComponent } from './components/pages-group/pages-group.component';
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
+import { SwiperDeTestesComponent } from './components/testes/swiper-de-testes/swiper-de-testes.component';
+import { CloneSwiperClassicoComponent } from './components/testes/clone-swiper-classico/clone-swiper-classico.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { CarrosselComponent } from './components/carrossel/carrossel.component';
     ModalOnInitComponent,
     FooterComponent,
     PagesGroupComponent,
+    SwiperDeTestesComponent,
+    CloneSwiperClassicoComponent,
   ],
   imports: [
     BrowserModule,
