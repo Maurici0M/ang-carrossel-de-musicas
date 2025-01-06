@@ -71,6 +71,10 @@
   background-color: transparent;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media (max-width: 610px) {
   //mudar o padding do container do modal e ter + espaço em telas menores
   .mat-mdc-dialog-container .mdc-dialog__surface {
@@ -91,12 +95,16 @@
     border-color: var(--mdc-outlined-button-disabled-outline-color);
     width: 50%;
   }
+
+  .mat-mdc-button:not(:disabled) {
+    width: 50%;
+  }
 }
 
 @media (max-width: 450px) {
   //mudando o tamanho do botão primário para ficar mais responsivo em telas menores
   .mat-mdc-outlined-button[disabled],
-  .mat-mdc-raised-button.mat-mdc-button-disabled {
+  .mat-mdc-raised-button.mat-mdc-button-disabled, .mat-mdc-button:not(:disabled) {
     width: 53%;
   }
 }

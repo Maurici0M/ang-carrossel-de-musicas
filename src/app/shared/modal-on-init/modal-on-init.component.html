@@ -1,14 +1,12 @@
-<h2 mat-dialog-title>Bem vindos ao Carrossel de Músicas 2.0! 🎄</h2>
+<h2 mat-dialog-title>{{ props.textPrimary }}</h2>
 <mat-dialog-content>
   <p>
-    Estamos em um processo intenso de atualizações para te trazer a melhor
-    experiência possível. Visite nossa documentação e saiba mais! Muito obrigado
-    por acessar o Carrossel de Músicas! Feliz 2025!
+    {{ props.textSecondary }}
   </p>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button
+  <!-- <button
     mat-raised-button
     disabled
     disabledInteractive
@@ -17,7 +15,9 @@
     (click)="testLog()"
   >
     Ir para documentação
-  </button>
+  </button> -->
+
+  <button mat-button> <a target="_blank" href="https://github.com/Maurici0M/ang-carrossel-de-musicas/blob/main/README.md#bem-vindos-ao-carrossel-de-m%C3%BAsicas-20">Ir para documentação</a></button>
 
   <button mat-raised-button mat-dialog-close (click)="closeModal()">
     Fechar
