@@ -24,8 +24,8 @@ Muito obrigado por visitar a página do <b>Carrossel de Músicas</b>!
 
 O que foi feito?
 
-* <b>Melhorias visuais nos botões de "Modo SoundCloud X Youtube"; </b>
-* <b>Atualização de conteúdos para os iFrames do modo Youtube; </b>
+* <b>Melhorias visuais nos botões de "Modo SoundCloud X YouTube"; </b>
+* <b>Atualização de conteúdos para os iFrames do modo YouTube; </b>
 * <b>Melhorias na identação dos estilos do carrossel; </b>
 
 </details>
@@ -42,11 +42,11 @@ O que foi feito?
 O que foi feito?
 
  <details>
-  <summary> <b>Adição de Modo SoundCloud X Youtube: </b> </summary>
+  <summary> <b>Adição de Modo SoundCloud X YouTube: </b> </summary>
   
   <br>
   
-  * Agora temos um botão de interação para mudar a rota do carrossel entre iframes vindos do Youtube e do SoundCloud <b>(funcionalidade atualmente em teste)</b>.
+  * Agora temos um botão de interação para mudar a rota do carrossel entre iframes vindos do YouTube e do SoundCloud <b>(funcionalidade atualmente em teste)</b>.
 </details>
 
  <details>
@@ -54,7 +54,7 @@ O que foi feito?
   
   <br>
   
-* Mudanças na estrutura do site foram realizadas para ser possível adicionar as novas funcionaliades do <b>"Modo SounCloud X Youtube"</b>. Também, foi realizado uma melhor estruturação lógica dos arquivos .ts dos componentes, a ponto de facilitar a manutenção e leitura da lógica do site. 
+* Mudanças na estrutura do site foram realizadas para ser possível adicionar as novas funcionaliades do <b>"Modo SounCloud X YouTube"</b>. Também, foi realizado uma melhor estruturação lógica dos arquivos .ts dos componentes, a ponto de facilitar a manutenção e leitura da lógica do site. 
 </details>
 
 </details>
@@ -82,7 +82,7 @@ O que foi feito?
   
   <br>
   
-  * Agora, o site está recebendo os iframes via servidor "Gist do GitHub", utilizando o Axios para fazer a comunicação. Dessa forma, não será preciso ficar se preocupando com o a alimentação de iframes via arquivos mockados no próprio site, facitando a adição e remoção de conteúdos.
+  * Agora, o site está recebendo os iframes via servidor "Gist do GitHub", utilizando o Axios para fazer a comunicação. Dessa forma, não será preciso ficar se preocupando com a alimentação de iframes vinculados a arquivos mockados no próprio site, facitando a adição e remoção de conteúdos.
 </details>
 
 <details>
