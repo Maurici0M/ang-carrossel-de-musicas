@@ -6,6 +6,9 @@ import {
   OnInit,
   Output,
   ViewEncapsulation,
+  Renderer2,
+  AfterViewInit,
+  EventEmitter
 } from '@angular/core';
 
 import { ChangeDetectorRef } from '@angular/core';
@@ -39,42 +42,98 @@ interface SwipperData {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class CarrosselComponent {
-  typeview: string = 'soundcloud'; // Iniciar com SoundCloud
+  typeview: string = 'soundcloud'; // Inicializa com SoundCloud
   viewModeTxt: string = 'SoundCloud (estável)';
 
-  // Notifique a detecção de mudanças
-  setTypeView(type: string) {
-    this.typeview = type;
-    this.viewModeTxt = type === 'soundcloud' ? 'SoundCloud (estável)' : 'YouTube (beta)';
-    this.changeDetector.detectChanges();
-  }
-
-  //breakpoints do swipper (responsividade)
+  // Breakpoints para o swiper (responsividade)
   breakpoints = {
     0: { slidesPerView: 1, spaceBetween: 60 },
     660: { slidesPerView: 2, spaceBetween: 60 },
     950: { slidesPerView: 3, spaceBetween: 60 },
   };
 
+  //variáveis que ficarão salvos os iframes retornados do gist
+  databaseSoundCloud: SafeHtml[] = [];
+  databaseYouTube: SafeHtml[] = [];
+
+  // Controlando os iframes exibidos
+  displayedIframes: SafeHtml[] = [];
+
   constructor(
     private sanitizer: DomSanitizer,
-    private changeDetector: ChangeDetectorRef
-  ) { }
+    private changeDetector: ChangeDetectorRef,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit() {
     this.getIAllIframesFromGist();
-
-    //chamar o database mockado (descomitar a linha abaixo e comitar a de cima)
-    //this.getIframesFromDatabaseLocal();
   }
 
-  databaseSoundCloud: SafeHtml[] = [];
+  // Variáveis para controlar o carregamento
+  currentBatchIndex = 0;
+  batchSize = 3 + 1;
 
-  databaseYouTube: SafeHtml[] = [];
+  // Função para carregar o próximo lote de iframes
+  loadNextBatch() {
+    const startIndex = this.currentBatchIndex * this.batchSize;
+    const endIndex = startIndex + this.batchSize;
 
-  //chamamento dos iframes
+    const currentDatabase =
+      this.typeview === 'soundcloud'
+        ? this.databaseSoundCloud
+        : this.databaseYouTube;
+
+    const newBatch = currentDatabase.slice(startIndex, endIndex);
+    this.displayedIframes = [...this.displayedIframes, ...newBatch];
+
+    this.currentBatchIndex++;
+
+    // Notifique a detecção de mudanças
+    this.changeDetector.detectChanges();
+
+  }
+
+  //função para capturar as setinhas do swiper no DOM, e adicionar funções
+  ngAfterViewInit() {
+    setTimeout(() => {
+      const nextButton = this.renderer.selectRootElement(
+        '.swiper-button-next',
+        true
+      );
+      const prevButton = this.renderer.selectRootElement(
+        '.swiper-button-prev',
+        true
+      );
+
+      this.renderer.listen(nextButton, 'click', () => {
+        console.log('Próximo slide');
+        //this.loadNextBatch();
+      });
+      this.renderer.listen(prevButton, 'click', () => {
+        console.log('Slide anterior');
+      });
+    }, 2);
+  }
+
+  // Função para alternar entre SoundCloud e YouTube
+  setTypeView(type: string) {
+    this.typeview = type;
+    this.viewModeTxt =
+      type === 'soundcloud' ? 'SoundCloud (estável)' : 'YouTube (beta)';
+    this.currentBatchIndex = 0;
+    this.displayedIframes = [];
+    this.loadNextBatch(); // Carregar o primeiro lote
+    this.changeDetector.detectChanges();
+  }
+
+  // Carregar todos os iframes do SoundCloud e YouTube
+  getIAllIframesFromGist() {
+    this.getIframesFromSoundCloud();
+    this.getIframesFromYouTube();
+  }
+
+  // Carregar iframes do SoundCloud
   getIframesFromSoundCloud() {
     axios
       .get(
@@ -82,75 +141,43 @@ export class CarrosselComponent {
       )
       .then((response) => {
         const swipperDatabase = response.data;
-        //console.log('Dados do Gist:', swipperDatabase);
         this.databaseSoundCloud = swipperDatabase.iframes.map(
-          (data: SwipperData) => {
-            const sanitized = this.sanitizer.bypassSecurityTrustHtml(
-              data.iFrame
-            );
-            //console.log('Sanitized iFrame:', sanitized);
-            return sanitized;
-          }
+          (data: SwipperData) =>
+            this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
         );
-        //console.log('Database:', this.database);
         this.shuffleArray(this.databaseSoundCloud);
-        // Notifique a detecção de mudanças
-        this.changeDetector.detectChanges();
+        this.loadNextBatch(); // Carregar o primeiro lote de iframes
       })
       .catch((error) => {
-        console.error('Erro ao carregar os dados do Gist:', error);
+        console.error('Erro ao carregar os dados do Gist (SoundCloud):', error);
       });
   }
 
+  // Carregar iframes do YouTube
   getIframesFromYouTube() {
     axios
-      // .get(
-      //   'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/4e4854defb889ae6a32d4cb7020d46034220bfad/database-youtube.json'
-      // )
-
-      .get('https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/92c2eee7783e83580b6c82b842f83e8a10183412/database-youtube.json')
+      .get(
+        'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/92c2eee7783e83580b6c82b842f83e8a10183412/database-youtube.json'
+      )
       .then((response) => {
         const swipperDatabase = response.data;
-        //console.log('Dados do Gist:', swipperDatabase);
         this.databaseYouTube = swipperDatabase.iframes.map(
-          (data: SwipperData) => {
-            const sanitized = this.sanitizer.bypassSecurityTrustHtml(
-              data.iFrame
-            );
-            //console.log('Sanitized iFrame:', sanitized);
-            return sanitized;
-          }
+          (data: SwipperData) =>
+            this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
         );
-        //console.log('Database:', this.database);
         this.shuffleArray(this.databaseYouTube);
-        // Notifique a detecção de mudanças
-        this.changeDetector.detectChanges();
+        this.loadNextBatch(); // Carregar o primeiro lote de iframes
       })
       .catch((error) => {
-        console.error('Erro ao carregar os dados do Gist:', error);
+        console.error('Erro ao carregar os dados do Gist (YouTube):', error);
       });
   }
 
-  getIAllIframesFromGist() {
-    this.getIframesFromSoundCloud();
-    this.getIframesFromYouTube();
-  }
-
-  //chamamento dos iframes usando os dados locais salvos na pasta database
-  getIframesFromDatabaseLocal() {
-    //trocar o valor do database para o import que desejar (SoundCloud / YouTube)
-    this.databaseSoundCloud = swipperDbLocalFromYouTube.iframes.map(
-      (data: SwipperData) => this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
-    );
-
-    this.shuffleArray(this.databaseSoundCloud);
-  }
-
-  //função de embraralhamento dos iframes
+  // Função para embaralhar os dados
   shuffleArray(array: any[]) {
     for (let index = array.length - 1; index > 0; index--) {
-      const randon = Math.floor(Math.random() * (index + 1));
-      [array[index], array[randon]] = [array[randon], array[index]];
+      const random = Math.floor(Math.random() * (index + 1));
+      [array[index], array[random]] = [array[random], array[index]];
     }
   }
 }
