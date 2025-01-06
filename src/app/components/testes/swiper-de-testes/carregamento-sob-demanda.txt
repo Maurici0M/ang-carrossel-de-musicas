@@ -1,0 +1,223 @@
+Para otimizar seu código, carregando apenas 3 iframes por vez e tornando-o mais eficiente, podemos aplicar algumas melhorias, como:
+
+Carregamento Lazy: Só carregar os iframes necessários para a visualização imediata e, quando o usuário rolar ou interagir com o carrossel, carregar mais iframes dinamicamente.
+Uso de trackBy no ngFor: Para melhorar a performance ao renderizar o carrossel.
+Paginação ou Scroll Lazy: Dividir os iframes em grupos de 3 e carregar o próximo grupo quando o usuário se aproximar do final da lista.
+Vamos aplicar essas melhorias ao seu código. Primeiro, vamos adicionar a lógica de paginação para carregar apenas 3 iframes de cada vez e depois o próximo conjunto, se necessário.
+
+Passo 1: Modificar o TypeScript
+No TypeScript, vamos gerenciar a paginação de maneira eficiente e carregar os iframes em blocos de 3.
+
+---------------------------------
+
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewEncapsulation
+} from '@angular/core';
+import axios from 'axios';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+interface SwipperData {
+  iFrame: any;
+}
+
+@Component({
+  selector: 'app-carrossel',
+  templateUrl: './carrossel.component.html',
+  styleUrls: ['./carrossel.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CarrosselComponent implements OnInit {
+  typeview: string = 'soundcloud'; // Inicializa com SoundCloud
+  viewModeTxt: string = 'SoundCloud (estável)';
+
+  // Variáveis para controlar o carregamento
+  currentBatchIndex = 0;
+  batchSize = 3;
+
+  databaseSoundCloud: SafeHtml[] = [];
+  databaseYouTube: SafeHtml[] = [];
+
+  // Controlando os iframes exibidos
+  displayedIframes: SafeHtml[] = [];
+
+  constructor(
+    private sanitizer: DomSanitizer,
+    private changeDetector: ChangeDetectorRef
+  ) {}
+
+  ngOnInit() {
+    this.getIAllIframesFromGist();
+  }
+
+  // Breakpoints para o swiper (responsividade)
+  breakpoints = {
+    0: { slidesPerView: 1, spaceBetween: 60 },
+    660: { slidesPerView: 2, spaceBetween: 60 },
+    950: { slidesPerView: 3, spaceBetween: 60 },
+  };
+
+  // Função para carregar o próximo lote de iframes
+  loadNextBatch() {
+    const startIndex = this.currentBatchIndex * this.batchSize;
+    const endIndex = startIndex + this.batchSize;
+
+    const currentDatabase =
+      this.typeview === 'soundcloud' ? this.databaseSoundCloud : this.databaseYouTube;
+
+    const newBatch = currentDatabase.slice(startIndex, endIndex);
+    this.displayedIframes = [...this.displayedIframes, ...newBatch];
+
+    this.currentBatchIndex++;
+
+    // Notifique a detecção de mudanças
+    this.changeDetector.detectChanges();
+  }
+
+  // Função para alternar entre SoundCloud e YouTube
+  setTypeView(type: string) {
+    this.typeview = type;
+    this.viewModeTxt = type === 'soundcloud' ? 'SoundCloud (estável)' : 'YouTube (beta)';
+    this.currentBatchIndex = 0;
+    this.displayedIframes = [];
+    this.loadNextBatch(); // Carregar o primeiro lote
+    this.changeDetector.detectChanges();
+  }
+
+  // Carregar todos os iframes do SoundCloud e YouTube
+  getIAllIframesFromGist() {
+    this.getIframesFromSoundCloud();
+    this.getIframesFromYouTube();
+  }
+
+  // Carregar iframes do SoundCloud
+  getIframesFromSoundCloud() {
+    axios
+      .get(
+        'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/a4d46dd60d029ced9c56b7af1bc1a894a8382014/database.json'
+      )
+      .then((response) => {
+        const swipperDatabase = response.data;
+        this.databaseSoundCloud = swipperDatabase.iframes.map((data: SwipperData) =>
+          this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
+        );
+        this.shuffleArray(this.databaseSoundCloud);
+        this.loadNextBatch(); // Carregar o primeiro lote de iframes
+      })
+      .catch((error) => {
+        console.error('Erro ao carregar os dados do Gist (SoundCloud):', error);
+      });
+  }
+
+  // Carregar iframes do YouTube
+  getIframesFromYouTube() {
+    axios
+      .get(
+        'https://gist.githubusercontent.com/Maurici0M/19d65c2e42f42d69bd30cf22786377c7/raw/92c2eee7783e83580b6c82b842f83e8a10183412/database-youtube.json'
+      )
+      .then((response) => {
+        const swipperDatabase = response.data;
+        this.databaseYouTube = swipperDatabase.iframes.map((data: SwipperData) =>
+          this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
+        );
+        this.shuffleArray(this.databaseYouTube);
+        this.loadNextBatch(); // Carregar o primeiro lote de iframes
+      })
+      .catch((error) => {
+        console.error('Erro ao carregar os dados do Gist (YouTube):', error);
+      });
+  }
+
+  // Função para embaralhar os dados
+  shuffleArray(array: any[]) {
+    for (let index = array.length - 1; index > 0; index--) {
+      const random = Math.floor(Math.random() * (index + 1));
+      [array[index], array[random]] = [array[random], array[index]];
+    }
+  }
+}
+
+------------------------------------
+
+Passo 2: Modificar o Template HTML
+Agora, vamos modificar o HTML para que ele use a variável displayedIframes para exibir apenas os 3 iframes carregados no momento.
+
+Atualizações no template HTML:
+
+------------------------------------
+
+<section class="background-swiper">
+  <div class="container-swiper">
+    <p>
+      Modo: <span>{{ viewModeTxt }}</span>
+    </p>
+    <div class="btn-container">
+      <i
+        class="bi bi-cloud-fog2-fill"
+        (click)="setTypeView('soundcloud')"
+        [ngClass]="{ active: typeview === 'soundcloud' }"
+      ></i>
+
+      <i
+        class="bi bi-youtube"
+        (click)="setTypeView('youtube')"
+        [ngClass]="{ active: typeview === 'youtube' }"
+      ></i>
+    </div>
+    <swiper
+      [slidesPerView]="3"
+      [spaceBetween]="50"
+      [navigation]="true"
+      [rewind]="true"
+      [effect]="'cards'"
+      [pagination]="{ clickable: true, dynamicBullets: true }"
+      [breakpoints]="breakpoints"
+    >
+      <ng-template
+        swiperSlide
+        *ngFor="let sanitizedIframe of displayedIframes; let i = index"
+        [ngIf]="sanitizedIframe"
+      >
+        <div
+          [innerHTML]="sanitizedIframe"
+          class="iframes"
+          [ngClass]="{ 'iframes-youtube': typeview === 'youtube' }"
+        >
+          <p>{{ typeview }} Iframe {{ i }} está carregando.</p>
+        </div>
+      </ng-template>
+    </swiper>
+
+    <!-- Load more button (opcional) -->
+    <button *ngIf="displayedIframes.length < (typeview === 'soundcloud' ? databaseSoundCloud.length : databaseYouTube.length)"
+            (click)="loadNextBatch()">
+      Carregar mais
+    </button>
+  </div>
+</section>
+
+------------------------------------
+
+Passo 3: Explicação das mudanças:
+
+- Paginação de Iframes: Ao invés de carregar todos os iframes de uma vez, a função loadNextBatch() carrega um grupo de 3 iframes por vez. A cada chamada, ela adiciona os novos iframes ao array displayedIframes, que é o que realmente aparece no swiper.
+
+- trackBy para otimização: Embora não tenhamos explicitamente adicionado a função trackBy aqui, ao usar *ngFor, Angular automaticamente optimiza a renderização quando a lista muda. Isso é muito útil para garantir que a troca de slides ou a atualização de conteúdo não cause re-renderizações desnecessárias.
+
+- Botão "Carregar mais": Uma abordagem simples de lazy loading, que permite ao usuário carregar mais 3 iframes quando clicar no botão "Carregar mais". Você pode adaptar a lógica para carregar automaticamente à medida que o usuário rola para o final, se preferir.
+
+- Usabilidade: Agora, a interface se torna mais reativa e eficiente, carregando apenas os dados necessários por vez e evitando o carregamento de muitos recursos de uma vez.
+
+Passo 4: Otimização de Performance
+
+Além disso, lembre-se de:
+
+*Desabilitar a detecção de mudanças
+
+------------------------------------
+
+

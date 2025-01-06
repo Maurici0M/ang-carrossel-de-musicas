@@ -1,0 +1,43 @@
+Para adicionar um evento de clique às setas de navegação do carrossel do Swiper JS em Angular, você pode usar a Angular Renderer2 para manipular o DOM diretamente.
+
+Como esses elementos só são visíveis quando o site está ativo, você precisará garantir que o evento seja anexado após o carregamento completo do carrossel.
+
+Aqui está uma maneira de fazer isso:
+
+- Importe o Renderer2 no seu componente:
+
+import { Component, AfterViewInit, Renderer2 } from '@angular/core';
+
+- Implemente a lógica no seu componente:
+
+export class NomeComponente  {
+  constructor(private renderer: Renderer2) {}
+
+  ngAfterViewInit() {
+    // Espera um pequeno intervalo para garantir que o carrossel foi inicializado
+    setTimeout(() => {
+      const nextButton = this.renderer.selectRootElement('.swiper-button-next', true);
+      const prevButton = this.renderer.selectRootElement('.swiper-button-prev', true);
+
+      this.renderer.listen(nextButton, 'click', () => {
+
+        console.log('Próximo slide');
+
+      // Adicione aqui o que você quer que aconteça no clique
+      });
+
+      this.renderer.listen(prevButton, 'click', () => {
+        console.log('Slide anterior');
+
+      // Adicione aqui o que você quer que aconteça no clique
+      });
+
+      }, 0);
+    }
+  }
+
+  ------
+
+  Este código garante que o evento de clique seja adicionado aos botões de navegação após o Swiper JS ter inicializado e renderizado os elementos no DOM.
+
+  O setTimeout com 0 ms é uma prática comum para garantir que todas as mudanças no DOM foram processadas antes de tentar manipular os elementos.
