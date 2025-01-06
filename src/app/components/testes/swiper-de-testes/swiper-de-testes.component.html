@@ -1,0 +1,58 @@
+<section class="background-swiper">
+  <div class="container-swiper">
+    <p>
+      Modo: <span>{{ viewModeTxt }}</span>
+    </p>
+
+    <div
+      class="btn-lazy-loading"
+      *ngIf="
+        displayedIframes.length <
+        (typeview === 'soundcloud'
+          ? databaseSoundCloud.length
+          : databaseYouTube.length)
+      "
+    >
+      <button mat-stroked-button (click)="loadNextBatch()">
+        Carregar + Músicas
+      </button>
+    </div>
+
+    <div class="btn-container">
+      <i
+        class="bi bi-cloud-fog2-fill"
+        (click)="setTypeView('soundcloud')"
+        [ngClass]="{ active: typeview === 'soundcloud' }"
+      ></i>
+
+      <i
+        class="bi bi-youtube"
+        (click)="setTypeView('youtube')"
+        [ngClass]="{ active: typeview === 'youtube' }"
+      ></i>
+    </div>
+    <swiper
+      [slidesPerView]="3"
+      [spaceBetween]="50"
+      [navigation]="true"
+      [rewind]="true"
+      [effect]="'cards'"
+      [pagination]="{ clickable: true, dynamicBullets: true }"
+      [breakpoints]="breakpoints"
+    >
+      <ng-template
+        swiperSlide
+        *ngFor="let sanitizedIframe of displayedIframes; let i = index"
+        [ngIf]="sanitizedIframe"
+      >
+        <div
+          [innerHTML]="sanitizedIframe"
+          class="iframes"
+          [ngClass]="{ 'iframes-youtube': typeview === 'youtube' }"
+        >
+          <p>{{ typeview }} Iframe {{ i }} está carregando.</p>
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
+</section>

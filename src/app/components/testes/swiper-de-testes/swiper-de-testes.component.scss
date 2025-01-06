@@ -1,0 +1,223 @@
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
+
+@import "../../../styles/variables.scss";
+@import "../../../styles/container.scss";
+
+.background-swiper {
+  background-color: azure;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+  .container-swiper {
+    @include container-element-principal;
+
+    padding: 30px 0px 50px 0px;
+
+    p {
+      text-align: center;
+
+      span {
+        @include poppinsMedium;
+      }
+    }
+
+    .btn-lazy-loading {
+      display: flex;
+      justify-content: center;
+      padding: 15px 0px 15px 0px;
+  }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 2%;
+      align-items: center;
+
+      .btn {
+        background: transparent;
+        width: 45px;
+        height: 45px;
+        border: none;
+        transition: all ease-in-out 0.5s;
+
+        //caso queira usar os ícones do yt e soundcloud dentro de tags buttons (desativado)
+        // .bi.bi-youtube {
+        //   font-size: 35px;
+        //   color: lavender;
+        //   cursor: pointer;
+        //   transition: all ease-in-out 0.5s;
+        // }
+
+        .bi.bi-youtube.active {
+          color: red;
+        }
+
+        .bi.bi-youtube:hover {
+          color: red;
+        }
+
+        .bi.bi-youtube:active {
+          color: rgba(255, 0, 0, 0.438);
+          transform: scale(0.95);
+        }
+
+        .bi.bi-cloud-fog2-fill {
+          font-size: 35px;
+          color: lavender;
+          cursor: pointer;
+          transition: all ease-in-out 0.5s;
+        }
+
+        .bi.bi-cloud-fog2-fill.active {
+          color: orangered;
+        }
+
+        .bi.bi-cloud-fog2-fill:hover {
+          color: orangered;
+        }
+
+        .bi.bi-cloud-fog2-fill:active {
+          color: rgba(255, 68, 0, 0.493);
+          transform: scale(0.95);
+        }
+      }
+
+      .bi.bi-youtube {
+        font-size: 35px;
+        color: lavender;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+      }
+
+      .bi.bi-youtube.active {
+        color: red;
+      }
+
+      .bi.bi-youtube:hover {
+        color: red;
+      }
+
+      .bi.bi-youtube:active {
+        color: rgba(255, 0, 0, 0.438);
+        transform: scale(0.95);
+      }
+
+      .bi.bi-cloud-fog2-fill {
+        font-size: 35px;
+        color: lavender;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+      }
+
+      .bi.bi-cloud-fog2-fill.active {
+        color: orangered;
+      }
+
+      .bi.bi-cloud-fog2-fill:hover {
+        color: orangered;
+      }
+
+      .bi.bi-cloud-fog2-fill:active {
+        color: rgba(255, 68, 0, 0.493);
+        transform: scale(0.95);
+      }
+    }
+  }
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    padding: 45px;
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: $color-white-primary;
+      background: url("../../../../assets/toolbar-background-degrade.png");
+      background-size: cover;
+
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      opacity: 90%;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 20px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: $color-black-primary;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+    }
+
+    .iframes {
+      //lembrar de deixar o display flex para não bugar os iframes no swipper
+      display: flex;
+
+      //caso seja um iframe do YouTube, desativar essa opção
+      flex-direction: column;
+      align-items: center;
+
+      iframe {
+        border-radius: 15px;
+        //height: 225px;
+        //box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+      }
+
+      div {
+        margin-top: 12px;
+        text-align: center;
+        background-color: #27bfc1;
+        border-radius: 25px;
+        width: 100%;
+
+        a {
+          color: #202020 !important;
+          font-weight: 900;
+        }
+      }
+    }
+
+    .iframes-youtube {
+      display: flex;
+      flex-direction: row;
+
+      iframe {
+        border-radius: 15px;
+        height: 279px;
+        //box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+      }
+    }
+  }
+}
+
+//responsiviade
+@media (max-width: 600px) {
+  .background-swiper {
+    .container-swiper {
+      .btn-container {
+        gap: 7%;
+      }
+    }
+
+    .swiper {
+      .iframes {
+        justify-content: center;
+
+        iframe {
+          width: 90%;
+        }
+      }
+    }
+  }
+}
