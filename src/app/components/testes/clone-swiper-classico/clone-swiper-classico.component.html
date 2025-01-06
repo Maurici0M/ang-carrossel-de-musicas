@@ -1,0 +1,76 @@
+<section class="background-swiper">
+  <div class="container-swiper">
+    <p>
+      Modo: <span>{{ viewModeTxt }}</span>
+    </p>
+    <div class="btn-container">
+      <i
+        class="bi bi-cloud-fog2-fill"
+        (click)="setTypeView('soundcloud')"
+        [ngClass]="{ active: typeview === 'soundcloud' }"
+      ></i>
+
+      <i
+        class="bi bi-youtube"
+        (click)="setTypeView('youtube')"
+        [ngClass]="{ active: typeview === 'youtube' }"
+      ></i>
+    </div>
+    <swiper
+      [slidesPerView]="3"
+      [spaceBetween]="50"
+      [navigation]="true"
+      [rewind]="true"
+      [effect]="'cards'"
+      [pagination]="{ clickable: true, dynamicBullets: true }"
+      [breakpoints]="breakpoints"
+    >
+      <ng-template
+        swiperSlide
+        *ngFor="
+          let sanitizedIframe of typeview === 'soundcloud'
+            ? databaseSoundCloud
+            : databaseYouTube;
+          let i = index
+        "
+      >
+        <div
+          *ngIf="sanitizedIframe"
+          [innerHTML]="sanitizedIframe"
+          class="iframes"
+          [ngClass]="{ 'iframes-youtube': typeview === 'youtube' }"
+        ></div>
+        <div *ngIf="!sanitizedIframe">Slide {{ i }} está vazio</div>
+      </ng-template>
+
+      <!-- SoundCloud -->
+      <!-- <ng-template
+        swiperSlide
+        *ngFor="let sanitizedIframe of databaseSoundCloud; let i = index"
+      >
+        <div
+          *ngIf="sanitizedIframe"
+          [innerHTML]="sanitizedIframe"
+          class="iframes"
+        >
+          <p>Iframe {{ i }} está carregando.</p>
+        </div>
+        <div *ngIf="!sanitizedIframe">Slide {{ i }} está vazio</div>
+      </ng-template> -->
+
+      <!-- Youtube -->
+      <!-- <ng-template
+        swiperSlide
+        *ngFor="let musicasYoutube of databaseYouTube; let i = index"
+      >
+        <div
+          *ngIf="musicasYoutube"
+          [innerHTML]="musicasYoutube"
+          class="iframes-youtube"
+        >
+        </div>
+        <div *ngIf="!musicasYoutube">Slide {{ i }} está vazio</div>
+      </ng-template> -->
+    </swiper>
+  </div>
+</section>
