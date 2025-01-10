@@ -4,25 +4,24 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
-
 export class ScreenSizeDetectorService {
   private mobileMode = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.updateMobileMode(window.innerWidth);
-      window.addEventListener('resize', this.onResize.bind(this));
+      window.addEventListener('resize', this.onResize);
     }
   }
 
-  onResize(event: any) {
+  private onResize = (event: any) => {
     this.updateMobileMode(event.target.innerWidth);
-  }
+  };
 
-  updateMobileMode(width: number) {
+  private updateMobileMode(width: number) {
+    this.mobileMode = width <= 1279;
     //somente a partir de 1280px o iframe deixa de aparecer a msg "ouvir no navegador"
     //assim, no restante queremos que ative a opção de texto ngIf mobileMode no app component
-    this.mobileMode = width <= 1279;
   }
 
   isMobileMode() {
