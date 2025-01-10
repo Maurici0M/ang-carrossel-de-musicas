@@ -10,7 +10,7 @@ Com a migração para o Angular, ficará mais fácil promover a adição de novo
 
 O projeto inicial continuará ativo por enquanto, e você poderá acessá-lo através do link abaixo:
 
-<a target="_blank" href='https://carrosel-de-musicas.vercel.app/'>Versão HTML CSS e JS</a>
+<a target="_blank" href='https://carrossel-de-musicas.vercel.app/'>Versão HTML CSS e JS</a>
 
 Muito obrigado por visitar a página do <b>Carrossel de Músicas</b>!
 
