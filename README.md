@@ -4,15 +4,44 @@ Essa versão tem o objetivo de promover mudanças significativas de uso da aplic
 
 O site foi totalmente refeito, e passou a utilizar a estrutura do framework Angular.
 
-Antes, toda adição e manutenção de conteúdos, era realizada através do Html, Css e JavaScript.
+Antes, toda adição e manutenção de conteúdos, era realizada através do HTML, CSS e JavaScript puro.
 
 Com a migração para o Angular, ficará mais fácil promover a adição de novos conteúdos, melhorias gerais e correções de bugs.
 
-Nosso projeto inicial continuará ativo por enquanto, e você poderá acessá-lo através do link abaixo:
+O projeto inicial continuará ativo por enquanto, e você poderá acessá-lo através do link abaixo:
 
 <a target="_blank" href='https://carrosel-de-musicas.vercel.app/'>Versão HTML CSS e JS</a>
 
 Muito obrigado por visitar a página do <b>Carrossel de Músicas</b>!
+
+---
+<details>
+
+<summary> <b> Versão 1.2.3 -> Atualizada em 05/01/2025 </b>: </summary>
+
+<br>
+
+O que foi feito?
+
+<details>
+  <summary> <b>Carregamento sob demanda: </b> </summary>
+  
+  <br>
+  
+  * Para resolver a má otimização do site, que anteriormente carregava todos os iFrames de uma vez, implementamos o botão "Carregar + Músicas". Agora, a aplicação inicia com uma quantidade limitada de iFrames, carregando mais conforme o usuário clica no botão. Essa mudança melhora tanto a otimização quanto a usabilidade do site.
+</details>
+
+
+<details>
+  <summary> <b>Mini [props] no modal: </b> </summary>
+  
+  <br>
+  
+  * Para eliminar a necessidade de alterações diretas no HTML, implementamos um modelo de interpolação para os dados exibidos no modal. Isso facilitará a atualização dos textos e reduzirá o tamanho do esqueleto HTML.
+
+</details>
+
+</details>
 
 ---
 
@@ -174,6 +203,8 @@ O que foi feito?
 - Icons list: https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
 
 - Bootstrap Icons: https://icons.getbootstrap.com/
+
+- Códigos de status de respostas HTTP: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
 
 ---
 
