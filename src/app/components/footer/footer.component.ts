@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalInfoSiteVersionComponent } from '../../shared/modal-info-site-version/modal-info-site-version.component';
 
 @Component({
   selector: 'app-footer',
@@ -12,5 +14,19 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     console.log("Versão atual: ", this.lastVersionUpdate, this.lastUpdate)
   }
+
+   //modal
+    readonly dialog = inject(MatDialog);
+
+    openModal(
+      enterAnimationDuration: string,
+      exitAnimationDuration: string
+    ): void {
+      this.dialog.open(ModalInfoSiteVersionComponent, {
+        width: '250px',
+        enterAnimationDuration,
+        exitAnimationDuration,
+      });
+    }
 
 }

@@ -1,5 +1,6 @@
 <section class="background-swiper">
   <div class="container-swiper">
+    <app-date-time-display-component></app-date-time-display-component>
     <p>
       Modo: <span>{{ viewModeTxt }}</span>
     </p>
@@ -13,7 +14,7 @@
           : databaseYouTube.length)
       "
     >
-      <button mat-stroked-button (click)="loadNextBatch()">
+      <button mat-stroked-button (click)="loadNextBatch()" (primaryButton)="loadNextBatch()">
         Carregar + Músicas
       </button>
     </div>

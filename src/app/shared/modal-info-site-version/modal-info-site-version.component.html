@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ props.textPrimary }}</h2>
+<mat-dialog-content>
+  <p>
+    {{ props.textSecondary }}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close (click)="closeModal()">
+    Fechar
+  </button>
+</mat-dialog-actions>

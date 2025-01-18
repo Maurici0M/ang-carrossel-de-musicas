@@ -8,7 +8,7 @@ Antes, toda adição e manutenção de conteúdos, era realizada através do HTM
 
 Com a migração para o Angular, ficará mais fácil promover a adição de novos conteúdos, melhorias gerais e correções de bugs.
 
-O projeto inicial continuará ativo por enquanto, e você poderá acessá-lo através do link abaixo:
+O projeto inicial continuará ativo, e você poderá acessá-lo através do link abaixo:
 
 <a target="_blank" href='https://carrossel-de-musicas.vercel.app/'>Versão HTML CSS e JS</a>
 

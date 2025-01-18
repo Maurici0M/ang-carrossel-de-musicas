@@ -2,27 +2,20 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnInit,
+  Output,
   ViewEncapsulation,
+  EventEmitter
 } from '@angular/core';
 
 //imports do modal
-import {
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+import {MatDialogRef} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-modal-on-init',
   templateUrl: './modal-on-init.component.html',
   styleUrl: './modal-on-init.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-
-  //Para conseguir aplicar os estilos ao modal
   encapsulation: ViewEncapsulation.None,
 })
 export class ModalOnInitComponent {
@@ -35,6 +28,8 @@ export class ModalOnInitComponent {
   }
 
   readonly dialogRef = inject(MatDialogRef<ModalOnInitComponent>);
+
+  @Output() typeView = new EventEmitter<any>;
 
   closeModal() {
     this.dialogRef.close;

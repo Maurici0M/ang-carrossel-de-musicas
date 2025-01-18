@@ -8,10 +8,12 @@ import {
   ViewEncapsulation,
   Renderer2,
   AfterViewInit,
-  EventEmitter
+  EventEmitter,
+  SecurityContext,
+  ChangeDetectorRef
 } from '@angular/core';
 
-import { ChangeDetectorRef } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 // Imports do Angular Material
 import { MatDialog } from '@angular/material/dialog';
@@ -21,19 +23,14 @@ import axios from 'axios';
 import { response } from 'express';
 import { error } from 'console';
 
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { SecurityContext } from '@angular/core'; // Importe SecurityContext de @angular/core
 
 // Imports de componentes do projeto
-import { ModalOnInitComponent } from '../../shared/modal-on-init/modal-on-init.component';
+import { SwipperDataInterface } from '../../interfaces/swiper-interface';
 
 // Import dos database mocados
 import swipperDbLocalFromSoundCloud from '../../../database/swipper-database.json';
 import swipperDbLocalFromYouTube from '../../../database/yt-swipper-database.json';
 
-interface SwipperData {
-  iFrame: any;
-}
 
 @Component({
   selector: 'app-carrossel',
@@ -43,6 +40,10 @@ interface SwipperData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarrosselComponent {
+  @Output() primaryButton = new EventEmitter<any>;
+
+  private swiperDataInterface!: SwipperDataInterface;
+
   typeview: string = 'soundcloud'; // Inicializa com SoundCloud
   viewModeTxt: string = 'SoundCloud (estável)';
 
@@ -76,6 +77,7 @@ export class CarrosselComponent {
 
   // Função para carregar o próximo lote de iframes
   loadNextBatch() {
+    this.primaryButton.emit()
     const startIndex = this.currentBatchIndex * this.batchSize;
     const endIndex = startIndex + this.batchSize;
 
@@ -96,24 +98,24 @@ export class CarrosselComponent {
 
   //função para capturar as setinhas do swiper no DOM, e adicionar funções
   ngAfterViewInit() {
-    setTimeout(() => {
-      const nextButton = this.renderer.selectRootElement(
-        '.swiper-button-next',
-        true
-      );
-      const prevButton = this.renderer.selectRootElement(
-        '.swiper-button-prev',
-        true
-      );
+    // setTimeout(() => {
+    //   const nextButton = this.renderer.selectRootElement(
+    //     '.swiper-button-next',
+    //     true
+    //   );
+    //   const prevButton = this.renderer.selectRootElement(
+    //     '.swiper-button-prev',
+    //     true
+    //   );
 
-      this.renderer.listen(nextButton, 'click', () => {
-        console.log('Próximo slide');
-        //this.loadNextBatch();
-      });
-      this.renderer.listen(prevButton, 'click', () => {
-        console.log('Slide anterior');
-      });
-    }, 2);
+    //   this.renderer.listen(nextButton, 'click', () => {
+    //     console.log('Próximo slide');
+
+    //   });
+    //   this.renderer.listen(prevButton, 'click', () => {
+    //     console.log('Slide anterior');
+    //   });
+    // }, 2);
   }
 
   // Função para alternar entre SoundCloud e YouTube
@@ -142,7 +144,7 @@ export class CarrosselComponent {
       .then((response) => {
         const swipperDatabase = response.data;
         this.databaseSoundCloud = swipperDatabase.iframes.map(
-          (data: SwipperData) =>
+          (data: SwipperDataInterface) =>
             this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
         );
         this.shuffleArray(this.databaseSoundCloud);
@@ -162,7 +164,7 @@ export class CarrosselComponent {
       .then((response) => {
         const swipperDatabase = response.data;
         this.databaseYouTube = swipperDatabase.iframes.map(
-          (data: SwipperData) =>
+          (data: SwipperDataInterface) =>
             this.sanitizer.bypassSecurityTrustHtml(data.iFrame)
         );
         this.shuffleArray(this.databaseYouTube);

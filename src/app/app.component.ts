@@ -21,6 +21,11 @@ export class AppComponent implements OnInit {
     textSecondaryFromMobile: this.textSecondaryFromMobile
   }
 
+  @Output() primaryButton = new EventEmitter<any>;
+  teste(){
+    this.primaryButton.emit()
+  }
+
   //modal
   readonly dialog = inject(MatDialog);
 
@@ -43,4 +48,8 @@ export class AppComponent implements OnInit {
     this.mobileMode = this.screenSize.isMobileMode()
     this.openModal('250ms', '150ms');
   }
+
+
+
+
 }

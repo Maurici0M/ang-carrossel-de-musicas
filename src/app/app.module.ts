@@ -28,6 +28,8 @@ import { PagesGroupComponent } from './components/pages-group/pages-group.compon
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
 import { SwiperDeTestesComponent } from './components/testes/swiper-de-testes/swiper-de-testes.component';
 import { CloneSwiperClassicoComponent } from './components/testes/clone-swiper-classico/clone-swiper-classico.component';
+import { ModalInfoSiteVersionComponent } from './shared/modal-info-site-version/modal-info-site-version.component';
+import { DateTimeDisplayComponentComponent } from './shared/date-time-display-component/date-time-display-component.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { CloneSwiperClassicoComponent } from './components/testes/clone-swiper-c
     PagesGroupComponent,
     SwiperDeTestesComponent,
     CloneSwiperClassicoComponent,
+    ModalInfoSiteVersionComponent,
+    DateTimeDisplayComponentComponent,
   ],
   imports: [
     BrowserModule,

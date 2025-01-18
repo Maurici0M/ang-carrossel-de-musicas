@@ -12,6 +12,8 @@ export class PagesGroupComponent {
   textSecondary: string = 'Use as setinhas para ver mais músicas, é só clicar e ouvir! 😉';
   textSecondaryFromMobile: string = 'Use as setinhas para ver mais músicas, clique em "ouvir no navegador" e pronto! 😉'
 
+  @Output() primaryButton = new EventEmitter<any>;
+
   props: any = {
     textPrimary: this.textPrimary,
     textSecondary: this.textSecondary,
